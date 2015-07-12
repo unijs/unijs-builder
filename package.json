@@ -2,9 +2,16 @@
   "name": "unijs-builder",
   "version": "0.0.1",
   "description": "Build plugin for unijs",
-  "main": "index.js",
+  "main": "build/index.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "build/"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node build.js",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,5 +28,9 @@
     "babelify": "^6.1.2",
     "browserify": "^10.2.6",
     "uglifyify": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.15",
+    "fs-extra": "^0.18.4"
   }
 }

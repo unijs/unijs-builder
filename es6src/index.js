@@ -63,5 +63,5 @@ var extend = function(Class) {
 }
 
 module.exports = {
-	extend: extend;
+	extend: extend
 };
