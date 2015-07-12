@@ -1,0 +1,25 @@
+{
+  "name": "unijs-builder",
+  "version": "0.0.1",
+  "description": "Build plugin for unijs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/unijs/unijs-builder.git"
+  },
+  "author": "Dustin Hoffner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unijs/unijs-builder/issues"
+  },
+  "homepage": "https://github.com/unijs/unijs-builder#readme",
+  "dependencies": {
+    "babel": "^5.6.14",
+    "babelify": "^6.1.2",
+    "browserify": "^10.2.6",
+    "uglifyify": "^3.0.1"
+  }
+}
