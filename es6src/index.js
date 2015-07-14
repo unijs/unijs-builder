@@ -26,7 +26,7 @@ var extend = function(Class) {
 
          this._resources.push(bundleJSpath);
 
-			var fs = requireNodeJsOnly("fs");
+			var fs = requireNodeJsOnly("fs-extra");
 
 			fs.outputFile(appJSpath, appText, function(err) {
 				if (err) {
