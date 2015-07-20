@@ -6,7 +6,7 @@ var extend = function(Class) {
 			super(...args);
 			this.routesPath = "";
 		}
-		mount(callback) {
+		_mount(callback) {
 			if (this.routesPath === "") {
 				return callback("You need to define the 'routesPath'!");
 			}
@@ -17,7 +17,8 @@ var extend = function(Class) {
 			} catch (err) {
 				return callback(err);
 			}
-			var appText = "var unijs = require('unijs'); unijs.checkLocation.setClient(); var React = require('react'); var Router = require('react-router'); var routes = require('" + directPath + "'); Router.run(routes, Router.HistoryLocation, function (Handler) { React.render(<Handler/>, document.getElementById('main')); });";
+
+			var appText = "var React = require('react'); var Router = require('react-router'); var routes = require('" + directPath + "'); window.onload = function(){ Router.run(routes, Router.HistoryLocation, function (Handler) { React.render(<Handler/>, document.getElementById('main')); });};";
 
 			var srcPath = __dirname + '';
 			var uniqName = this._path.split("/").join('#') + "_" + this._name;
@@ -34,27 +35,27 @@ var extend = function(Class) {
 				}
 				var browserify = requireNodeJsOnly("browserify");
 				var babelify = requireNodeJsOnly("babelify");
+				var uglifyify = requireNodeJsOnly('uglifyify');
 
-				var bundleApp = function() {
-					browserify({
-							debug: true
-						})
-						.transform(babelify)
-						.transform({
-							global: true
-						}, 'uglifyify')
-						.require(appJSpath, {
-							entry: true
-						})
-						.bundle()
-						.on("error", function(err) {
-							return callback(err);
-						})
-						.on("end", function() {
-							super.mount(callback);
-						})
-						.pipe(fs.createWriteStream(bundleJSpath));
-				};
+				browserify({
+						debug: true
+					})
+					.transform(babelify)
+					.transform({
+						global: true
+					}, 'uglifyify')
+					.require(appJSpath, {
+						entry: true
+					})
+					.bundle()
+					.on("error", function(err) {
+						return callback(err);
+					})
+					.on("end", function() {
+						super._mount(callback);
+					})
+					.pipe(fs.createWriteStream(bundleJSpath));
+
 			});
 		}
 	}
