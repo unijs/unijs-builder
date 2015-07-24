@@ -35,15 +35,16 @@ var extend = function(Class) {
 				}
 				var browserify = requireNodeJsOnly("browserify");
 				var babelify = requireNodeJsOnly("babelify");
-				var uglifyify = requireNodeJsOnly('uglifyify');
+				//var uglifyify = requireNodeJsOnly('uglifyify');
 
 				browserify({
 						debug: true
 					})
 					.transform(babelify)
-					.transform({
+					/*.transform({
 						global: true
-					}, 'uglifyify')
+					}, 'uglifyify')*/
+					// "uglifyify": "^3.0.1",
 					.require(appJSpath, {
 						entry: true
 					})
