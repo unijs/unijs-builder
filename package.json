@@ -1,6 +1,6 @@
 {
   "name": "unijs-builder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build plugin for unijs",
   "main": "build/index.js",
   "files": [
