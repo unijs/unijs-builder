@@ -38,7 +38,7 @@ var extend = function(Class) {
 				//var uglifyify = requireNodeJsOnly('uglifyify');
 
 				browserify({
-						debug: true
+						debug: false
 					})
 					.transform(babelify)
 					/*.transform({
